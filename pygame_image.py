@@ -14,16 +14,22 @@ def main():
     koukaton = pg.image.load("fig/3.png")
     koukaton = pg.transform.flip(koukaton, True, False)
     bg_fliped_img = pg.transform.flip(bg_img, True, False)
+    koukaton_rct = koukaton.get_rect()
+    koukaton_rct.center = 300,200
     tmr = 0
     while True:
         x = tmr % 3200
+        key_lst = pg.key.get_pressed()
         for event in pg.event.get():
             if event.type == pg.QUIT: return
+        if(key_lst[pg.K_UP] == True):
+            koukaton_rct.move_ip(0,-1)
+        elif(key_lst[pg.K_DOWN]):
+            koukaton_rct.move_ip(0,1)
         screen.blit(bg_img, [-x, 0])
-        screen.blit(bg_fliped_img, [-x+1600, 0])
+        screen.blit(bg_fliped_img, [-x+1600,0])
         screen.blit(bg_img, [-x+3200, 0])
-        screen.blit(koukaton,[200,300])
-
+        screen.blit(koukaton,koukaton_rct)
         pg.display.update()
         tmr += 1
         clock.tick(200)
