@@ -34,9 +34,7 @@ def main():
         if(key_lst[pg.K_RIGHT]):
             ctl[0] += 2
         ctl[0] -= 1
-
         koukaton_rct.move_ip(ctl[0],ctl[1])
-
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_fliped_img, [-x+1600,0])
         screen.blit(bg_img, [-x+3200, 0])
