@@ -11,14 +11,13 @@ def main():
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
     koukaton = pg.image.load("fig/3.png")
-    koukaton = pg.transform.rotozoom(koukaton, 10, 0)
+    koukaton = pg.transform.flip(koukaton, True, False)
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-
         screen.blit(bg_img, [0, 0])
-        screen.blit(koukaton,[200,200])
+        bg_img.blit(koukaton,[300,200])
         pg.display.update()
         tmr += 1
         clock.tick(10)
